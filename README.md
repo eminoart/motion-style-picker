@@ -29,7 +29,7 @@ An Agent Skill for Claude, Claude Code, Codex / ChatGPT, Cursor, Gemini CLI and 
 Most people can't name the motion style they want, so they say "make it look cool" or "make it move." This skill:
 
 1. Asks 3 multiple-choice questions: purpose (logo intro, explainer, short-form ad, UI motion), aspect ratio, and output.
-2. Shows an **animated preview gallery of 30 styles**. Click one card for the main style and a second for an optional accent style.
+2. Shows an **animated preview gallery of 30 styles that uses your own words** — type your brand name or copy and every preview animates it. Click a card and it gets a **Main ✓** badge; click another for an optional **Accent ✓**.
 3. Asks about animation types (line draw, mask reveal, kinetic text, beat-synced cuts…) and tempo (smooth, springy, snappy, dreamy), then length, elements, colour and ending.
 4. Works in **English or Korean**: questions follow your language, and the gallery has an English / 한국어 switch.
 5. Writes a **scene-by-scene breakdown** and a ready-to-paste **English motion prompt** with palette hex codes, fps, easing, transitions and things to avoid. It can go on to build an HTML animation, an MP4 or an After Effects brief.
@@ -82,7 +82,7 @@ Say something like *"help me pick a motion graphics style for a logo intro"* or 
 모션그래픽 스타일 이름을 몰라서 "영상 멋지게", "움직이게"라고만 말하게 되는 경우가 많아요. 이 스킬은 이렇게 진행돼요.
 
 1. 객관식 3문항으로 용도(로고 인트로, 설명 영상, SNS 숏폼, UI 모션), 화면 비율, 결과물을 묻습니다.
-2. **스타일 30종이 실제로 움직이는 미리보기 갤러리**를 보여 줍니다. 처음 누른 카드가 메인 스타일, 두 번째로 누른 카드가 보조 스타일이 돼요.
+2. **스타일 30종이 실제로 움직이는 미리보기 갤러리**를 보여 줍니다. 위 칸에 브랜드 이름이나 카피를 쓰면 모든 미리보기가 그 글자로 움직여요. 카드를 누르면 **메인 ✓**, 하나 더 누르면 **보조 ✓** 배지가 붙어요.
 3. 애니메이션 유형(라인 드로잉, 마스크 리빌, 키네틱 텍스트, 비트 싱크 컷 등)과 템포(차분, 탄력, 딱딱 끊김, 몽환)를 묻고, 이어서 길이, 요소, 색, 마무리를 묻습니다.
 4. **한국어와 영어**를 모두 지원해요. 질문은 쓰는 언어로 나오고, 갤러리 오른쪽 위에서 한국어/English를 바꿀 수 있어요.
 5. **장면 구성표**와 바로 붙여 넣을 수 있는 **영어 모션 프롬프트**를 만들어 줍니다. 팔레트 hex, fps, 이징, 전환 방식, 피할 것까지 담겨요. 원하면 HTML 애니메이션, MP4, After Effects 작업 지시서까지 이어서 만들어요.
