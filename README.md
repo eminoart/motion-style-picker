@@ -9,9 +9,14 @@ An Agent Skill for Claude, Claude Code, Codex / ChatGPT, Cursor, Gemini CLI and 
 *"모션그래픽 스타일 이름을 모르겠어"* — 그럴 때 쓰는 스킬이에요.
 
 <p align="center">
-  <img src="docs/gallery.gif" alt="Animated gallery of 24 motion graphics styles / 움직이는 모션그래픽 스타일 24종 갤러리" width="640">
+  <img src="docs/gallery.gif" alt="Animated gallery of 30 motion graphics styles / 움직이는 모션그래픽 스타일 30종 갤러리" width="640">
 </p>
 <p align="center"><sub>The in-chat gallery: click once for the main style (solid outline), again for an accent (dashed).<br>채팅 안에 뜨는 갤러리. 첫 클릭은 메인 스타일(실선), 두 번째 클릭은 보조 스타일(점선)이에요.</sub></p>
+
+<p align="center">
+  <img src="docs/gallery-3d.gif" alt="3D styles: clay, claymation, glass, chrome, 3D type, low-poly, inflatable, jelly / 3D 스타일 미리보기" width="640">
+</p>
+<p align="center"><sub>3D styles · 3D 스타일</sub></p>
 
 [English](#english) · [한국어](#한국어) · [Sample output / 결과 예시](#sample-output--결과-예시)
 
@@ -24,11 +29,12 @@ An Agent Skill for Claude, Claude Code, Codex / ChatGPT, Cursor, Gemini CLI and 
 Most people can't name the motion style they want, so they say "make it look cool" or "make it move." This skill:
 
 1. Asks 3 multiple-choice questions: purpose (logo intro, explainer, short-form ad, UI motion), aspect ratio, and output.
-2. Shows an **animated preview gallery of 24 styles**. Click one card for the main style and a second for an optional accent style.
+2. Shows an **animated preview gallery of 30 styles**. Click one card for the main style and a second for an optional accent style.
 3. Asks about animation types (line draw, mask reveal, kinetic text, beat-synced cuts…) and tempo (smooth, springy, snappy, dreamy), then length, elements, colour and ending.
 4. Writes a **scene-by-scene breakdown** and a ready-to-paste **English motion prompt** with palette hex codes, fps, easing, transitions and things to avoid. It can go on to build an HTML animation, an MP4 or an After Effects brief.
 
-**Styles:** kinetic typography, flat 2D, line art, infographic, whiteboard doodle, liquid morph, isometric, 3D clay, glass 3D, paper collage, rubber hose, frame-by-frame, glitch, retro VHS, pixel 8-bit, neon cyber, particle abstract, geometric minimal, Swiss grid, duotone pop, watercolor, risograph, UI motion, 2.5D parallax.
+**Styles:** kinetic typography, flat 2D, line art, infographic, whiteboard doodle, liquid morph, paper collage, rubber hose, frame-by-frame, glitch, retro VHS, pixel 8-bit, neon cyber, particle abstract, geometric minimal, Swiss grid, duotone pop, watercolor, risograph, UI motion, 2.5D parallax.
+**3D:** isometric, 3D clay, claymation (stop-motion clay), glass 3D, chrome/metal, 3D typography, low-poly, inflatable, jelly/soft-body.
 
 Open [`skills/motion-style-picker/assets/gallery.html`](skills/motion-style-picker/assets/gallery.html) in a browser to see the gallery.
 
@@ -75,11 +81,12 @@ Say something like *"help me pick a motion graphics style for a logo intro"* or 
 모션그래픽 스타일 이름을 몰라서 "영상 멋지게", "움직이게"라고만 말하게 되는 경우가 많아요. 이 스킬은 이렇게 진행돼요.
 
 1. 객관식 3문항으로 용도(로고 인트로, 설명 영상, SNS 숏폼, UI 모션), 화면 비율, 결과물을 묻습니다.
-2. **스타일 24종이 실제로 움직이는 미리보기 갤러리**를 보여 줍니다. 처음 누른 카드가 메인 스타일, 두 번째로 누른 카드가 보조 스타일이 돼요.
+2. **스타일 30종이 실제로 움직이는 미리보기 갤러리**를 보여 줍니다. 처음 누른 카드가 메인 스타일, 두 번째로 누른 카드가 보조 스타일이 돼요.
 3. 애니메이션 유형(라인 드로잉, 마스크 리빌, 키네틱 텍스트, 비트 싱크 컷 등)과 템포(차분, 탄력, 딱딱 끊김, 몽환)를 묻고, 이어서 길이, 요소, 색, 마무리를 묻습니다.
 4. **장면 구성표**와 바로 붙여 넣을 수 있는 **영어 모션 프롬프트**를 만들어 줍니다. 팔레트 hex, fps, 이징, 전환 방식, 피할 것까지 담겨요. 원하면 HTML 애니메이션, MP4, After Effects 작업 지시서까지 이어서 만들어요.
 
-**스타일:** 키네틱 타이포, 플랫 2D, 라인아트, 인포그래픽, 화이트보드 손그림, 리퀴드 모프, 아이소메트릭, 3D 클레이, 글래스 3D, 콜라주·컷아웃, 러버호스 카툰, 프레임바이프레임, 글리치, 레트로 VHS, 픽셀 8비트, 네온 사이버, 파티클 추상, 미니멀 기하, 스위스 그리드, 듀오톤 팝, 수채화, 리소그래프, UI 모션, 2.5D 패럴랙스.
+**스타일:** 키네틱 타이포, 플랫 2D, 라인아트, 인포그래픽, 화이트보드 손그림, 리퀴드 모프, 콜라주·컷아웃, 러버호스 카툰, 프레임바이프레임, 글리치, 레트로 VHS, 픽셀 8비트, 네온 사이버, 파티클 추상, 미니멀 기하, 스위스 그리드, 듀오톤 팝, 수채화, 리소그래프, UI 모션, 2.5D 패럴랙스.
+**3D:** 아이소메트릭, 3D 클레이, 스톱모션 클레이, 글래스 3D, 크롬·메탈, 3D 타이포, 로우폴리, 인플레이터블, 젤리·소프트바디.
 
 갤러리를 바로 보고 싶으면 [`skills/motion-style-picker/assets/gallery.html`](skills/motion-style-picker/assets/gallery.html)을 브라우저로 열어 보세요.
 
@@ -150,7 +157,7 @@ than three words on screen at once.
 `npx skills find` or the find-skills skill should match searches like:
 `npx skills find`나 find-skills로 이렇게 찾을 수 있어요.
 
-- 모션그래픽 스타일 이름을 모르겠어 · 모션그래픽 스타일 추천 · 애니메이션 스타일 고르기
+- 모션그래픽 스타일 이름을 모르겠어 · 모션그래픽 스타일 추천 · 애니메이션 스타일 고르기 · 3D 클레이 애니메이션
 - motion graphics style · animation style picker · motion design style · don't know the motion style name
 
 ## Repository layout
@@ -159,7 +166,7 @@ than three words on screen at once.
 skills/motion-style-picker/
 ├── SKILL.md            # workflow, style data, embedded gallery
 └── assets/gallery.html # standalone gallery
-docs/gallery.gif, gallery.png  # preview images
+docs/gallery.gif, gallery-3d.gif, gallery.png  # preview images
 dist/motion-style-picker.zip   # upload package for Claude.ai / ChatGPT
 install.sh                     # multi-agent installer
 AGENTS.md                      # install instructions for AI agents
