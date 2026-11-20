@@ -20,6 +20,7 @@ People rarely know motion-style names. This skill asks a few multiple-choice que
 - 도구가 없으면 같은 질문을 번호 목록으로 보여 주고 "1-B, 2-A처럼 답해 주세요"라고 안내합니다. 이때는 선택지를 4개보다 많이 보여 줘도 됩니다.
 - 사용자가 이미 대화에서 말한 항목(예: "유튜브 쇼츠용")은 묻지 않고 건너뜁니다.
 - 선택지마다 짧은 설명(description)을 붙여 이름을 몰라도 고를 수 있게 합니다.
+- 사용자가 "목록 보여줘", "어떤 스타일 있어?", "show me the styles"처럼 스타일부터 보고 싶다고 하면 1라운드를 건너뛰고 바로 갤러리를 띄웁니다. 1라운드 질문은 스타일을 고른 뒤에 묻습니다.
 
 ## 언어 / Language
 
@@ -181,11 +182,12 @@ When the gallery button is pressed in English, the message looks like `Motion st
 
 - 브랜드 색을 안 알려 줬으면 스타일에 맞는 hex를 정해 넣고 "원하면 바꿔 드릴게요"라고 한 줄 덧붙입니다.
 - 장면 수는 길이에 맞춥니다: 3~6초 1~2장면, 10~15초 3~4장면, 30초 5~6장면, 60초 이상 8장면 안팎.
+- 3D 계열 스타일(3d-clay, clay-stopmotion, glass-3d, chrome-metal, 3d-type, low-poly, inflatable, jelly-softbody)은 프롬프트에 재질, 조명(soft key light, HDRI 등), 카메라 움직임을 넣고, Blender·Cinema 4D·Spline 같은 3D 툴이나 AI 영상 생성기에서 쓰면 가장 잘 나온다고 한 줄 알려 줍니다.
 
 ## 결과물별 다음 단계
 
 - **프롬프트만**: 위 결과로 끝. 프롬프트를 코드 블록에 넣어 복사하기 쉽게 합니다.
-- **HTML 애니메이션**: CSS/SVG/JS 한 파일로 만듭니다. 아티팩트·캔버스 기능이 있으면 거기에 게시하고, 없으면 파일로 줍니다. 라인아트 전용 스킬이 있으면 그것을 씁니다.
+- **HTML 애니메이션**: CSS/SVG/JS 한 파일로 만듭니다(3D는 three.js). 아티팩트·캔버스 기능이 있으면 거기에 게시하고, 없으면 파일로 줍니다. 라인아트 전용 스킬이 있으면 그것을 씁니다.
 - **MP4 영상**: 영상 제작 스킬이나 도구(예: `video-making`, `line-art-animation`, Remotion, ffmpeg)가 있으면 위 장면 구성대로 만듭니다. 없으면 HTML 애니메이션을 만들고 화면 녹화 방법을 안내합니다.
 - **AE·작업 지시서**: 장면별 레이어, 키프레임 시간, 이징 값(예: cubic-bezier(0.34,1.56,0.64,1)), 필요한 소스 목록을 표로 정리합니다.
 
