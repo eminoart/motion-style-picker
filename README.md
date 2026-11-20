@@ -6,8 +6,14 @@
 An Agent Skill for Claude, Claude Code, Codex / ChatGPT, Cursor, Gemini CLI and other agents that read `SKILL.md`.
 
 **스타일 이름을 몰라도, 움직이는 예시를 보고 고르는 모션그래픽 스타일 선택 스킬.**
+*"모션그래픽 스타일 이름을 모르겠어"* — 그럴 때 쓰는 스킬이에요.
 
-[English](#english) · [한국어](#한국어)
+<p align="center">
+  <img src="docs/gallery.gif" alt="Animated gallery of 24 motion graphics styles / 움직이는 모션그래픽 스타일 24종 갤러리" width="640">
+</p>
+<p align="center"><sub>The in-chat gallery: click once for the main style (solid outline), again for an accent (dashed).<br>채팅 안에 뜨는 갤러리. 첫 클릭은 메인 스타일(실선), 두 번째 클릭은 보조 스타일(점선)이에요.</sub></p>
+
+[English](#english) · [한국어](#한국어) · [Sample output / 결과 예시](#sample-output--결과-예시)
 
 ---
 
@@ -113,12 +119,47 @@ curl -fsSL https://raw.githubusercontent.com/eminoart/motion-style-picker/main/i
 
 ---
 
+## Sample output / 결과 예시
+
+Choices: SNS short-form · 9:16 · main **kinetic-type** + accent **glitch** · kinetic text, beat-synced cuts · snappy · 10–15 s
+선택: SNS 숏폼 · 9:16 · 메인 키네틱 타이포 + 보조 글리치 · 키네틱 텍스트, 비트 싱크 컷 · 빠르고 딱딱 끊김 · 10~15초
+
+```
+장면 구성
+1. 0–2s  검은 화면, "STOP" 글자가 박자마다 커졌다 줄어듦
+2. 2–6s  핵심 카피 3단어가 비트에 맞춰 한 단어씩 튀어나오고, 컷마다 RGB 글리치
+3. 6–10s 제품 이름이 화면을 꽉 채우며 회전, 마지막 박자에 글리치로 깨짐
+4. 10–12s 로고 + CTA, 글리치 잔상이 걷히며 정지
+
+English motion prompt
+Vertical 9:16, 12 seconds at 30 fps, kinetic typography with glitch accents.
+Palette: #0A0A0A background, #FFFFFF type, #FF004C and #00F0FF for RGB-split frames.
+Bold condensed sans words scale and rotate on every beat with snappy easing
+(cubic-bezier(0.7,0,0.3,1)), hard cuts between phrases, a 2-frame RGB split
+and scanline jitter on each cut. End on the logo and a CTA as the glitch settles
+into a clean still frame. Avoid gradients, soft fades, drop shadows and more
+than three words on screen at once.
+```
+
+<p align="center">
+  <img src="docs/gallery.png" alt="Gallery with kinetic typography selected as main and glitch as accent" width="560">
+</p>
+
+## Find it / 검색
+
+`npx skills find` or the find-skills skill should match searches like:
+`npx skills find`나 find-skills로 이렇게 찾을 수 있어요.
+
+- 모션그래픽 스타일 이름을 모르겠어 · 모션그래픽 스타일 추천 · 애니메이션 스타일 고르기
+- motion graphics style · animation style picker · motion design style · don't know the motion style name
+
 ## Repository layout
 
 ```
 skills/motion-style-picker/
 ├── SKILL.md            # workflow, style data, embedded gallery
 └── assets/gallery.html # standalone gallery
+docs/gallery.gif, gallery.png  # preview images
 dist/motion-style-picker.zip   # upload package for Claude.ai / ChatGPT
 install.sh                     # multi-agent installer
 AGENTS.md                      # install instructions for AI agents

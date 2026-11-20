@@ -1,6 +1,6 @@
 ---
 name: motion-style-picker
-description: "Pick a motion graphics style without knowing its name — shows an animated preview gallery of 24 styles (kinetic typography, isometric, glitch, liquid morph, 3D clay...), asks multiple-choice questions about purpose, animation type and tempo, then writes a Korean summary and an English motion prompt. 모션그래픽 스타일 이름을 몰라도 움직이는 미리보기 갤러리와 객관식 질문으로 고르고 영어 모션 프롬프트를 만듭니다. Use for vague requests like '영상 멋지게', 'make it move', logo intros, explainers, short-form ads."
+description: "Pick a motion graphics style when you don't know the style name. 모션그래픽 스타일 이름을 모르겠어? 움직이는 미리보기 갤러리 24종을 보고 고르면 장면 구성과 영어 모션 프롬프트를 만들어 줍니다. Animated preview gallery of 24 motion styles (kinetic typography, isometric, glitch, liquid morph, 3D clay, line art, 2.5D parallax...) plus multiple-choice questions on purpose, animation type and tempo, then a scene breakdown and an English motion prompt. Use when: 모션그래픽 스타일 추천, 애니메이션 스타일 고르기, 스타일 이름 모름, 영상 멋지게, 로고 인트로, 설명 영상, 숏폼 광고, motion graphics style picker, animation style, motion design, don't know the motion style name."
 ---
 
 # Motion Style Picker
