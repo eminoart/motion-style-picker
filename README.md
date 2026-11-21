@@ -37,7 +37,7 @@ Most people can't name the motion style they want, so they say "make it look coo
 **Styles:** kinetic typography, flat 2D, line art, infographic, whiteboard doodle, liquid morph, paper collage, rubber hose, frame-by-frame, glitch, retro VHS, pixel 8-bit, neon cyber, particle abstract, geometric minimal, Swiss grid, duotone pop, watercolor, risograph, UI motion, 2.5D parallax.
 **3D:** isometric, 3D clay, claymation (stop-motion clay), glass 3D, chrome/metal, 3D typography, low-poly, inflatable, jelly/soft-body.
 
-Open [`skills/motion-style-picker/assets/gallery.html`](skills/motion-style-picker/assets/gallery.html) in a browser to see the gallery.
+**Try the gallery now:** https://eminoart.github.io/motion-style-picker/ (or open [`assets/gallery.html`](skills/motion-style-picker/assets/gallery.html) locally).
 
 ### Install
 
@@ -90,7 +90,7 @@ Say something like *"help me pick a motion graphics style for a logo intro"* or 
 **스타일:** 키네틱 타이포, 플랫 2D, 라인아트, 인포그래픽, 화이트보드 손그림, 리퀴드 모프, 콜라주·컷아웃, 러버호스 카툰, 프레임바이프레임, 글리치, 레트로 VHS, 픽셀 8비트, 네온 사이버, 파티클 추상, 미니멀 기하, 스위스 그리드, 듀오톤 팝, 수채화, 리소그래프, UI 모션, 2.5D 패럴랙스.
 **3D:** 아이소메트릭, 3D 클레이, 스톱모션 클레이, 글래스 3D, 크롬·메탈, 3D 타이포, 로우폴리, 인플레이터블, 젤리·소프트바디.
 
-갤러리를 바로 보고 싶으면 [`skills/motion-style-picker/assets/gallery.html`](skills/motion-style-picker/assets/gallery.html)을 브라우저로 열어 보세요.
+**갤러리 바로 보기:** https://eminoart.github.io/motion-style-picker/ (또는 [`assets/gallery.html`](skills/motion-style-picker/assets/gallery.html)을 브라우저로 열기)
 
 ### 설치
 
@@ -166,8 +166,10 @@ than three words on screen at once.
 
 ```
 skills/motion-style-picker/
-├── SKILL.md            # workflow, style data, embedded gallery
-└── assets/gallery.html # standalone gallery
+├── SKILL.md                    # workflow and style data (gallery opens by link)
+└── assets/
+    ├── gallery.html            # standalone gallery (also served at GitHub Pages)
+    └── gallery-widget.html     # fragment for the in-chat widget
 docs/gallery.gif, gallery-3d.gif, gallery.png  # preview images
 dist/motion-style-picker.zip   # upload package for Claude.ai / ChatGPT
 install.sh                     # multi-agent installer
