@@ -13,7 +13,8 @@ People rarely know motion-style names. This skill asks a few multiple-choice que
 
 - `SKILL.md` : 진행 순서와 스타일·유형 데이터 (갤러리는 링크로 열므로 이 파일만 있어도 동작)
 - `assets/gallery.html` : 브라우저에서 바로 열 수 있는 독립 실행판 갤러리 (GitHub Pages로도 공개)
-- `assets/gallery-widget.html` : 채팅 안 인라인 위젯용 조각
+- `assets/gallery.js` : 채팅 안 위젯이 CDN(jsDelivr)으로 불러오는 갤러리 번들
+- `assets/gallery-widget.html` : CDN이 막혔을 때 쓰는 인라인 위젯 전체 코드
 
 ## 질문 방법
 
@@ -60,17 +61,23 @@ When the gallery button is pressed in English, the message looks like `Motion st
 
 스타일은 **객관식 목록이 아니라 갤러리로 보여 줍니다.** 사용자는 이름이나 느낌을 나타내는 단어보다 실제로 움직이는 예시를 보고 고르는 쪽을 원합니다.
 
-**A. 기본: 미리 만든 갤러리 링크 (가장 빠름, 모든 환경)**
-갤러리 코드를 매번 새로 쓰지 않습니다. 아래 링크를 주고 바로 기다립니다.
-1. 1라운드 답을 어떻게 이해했는지 한 줄로 쓰고 이렇게 안내합니다. "아래 링크에서 스타일마다 실제로 움직이는 미리보기 90종을 볼 수 있어요. 위 칸에 영상 글자를 넣고, 카드를 골라 버튼을 누르면 선택 문장이 복사돼요. 여기에 붙여 넣어 주세요."
-   - 링크: https://eminoart.github.io/motion-style-picker/
-   - 안 열리면: https://raw.githack.com/eminoart/motion-style-picker/main/skills/motion-style-picker/assets/gallery.html
-   - 사용자가 대화에서 이미 글자(브랜드명·카피)를 말했다면 "위 칸에 ○○을 넣어 보세요"라고 덧붙입니다.
-2. 링크와 함께 **바로 고를 수 있는 단축 선택지**도 줍니다. `AskUserQuestion`으로 용도에 맞는 후보 4개를 후보표에서 골라 묻습니다(header: 스타일, 선택지 설명은 스타일표의 한 줄 설명). 사용자는 링크를 보지 않고 바로 골라도 됩니다.
-3. 붙여 넣은 문장은 `모션 스타일 선택 → 메인: kinetic-type (키네틱 타이포), 보조: 없음 · 포맷: chat-story (채팅 스토리) · 오버레이: punch-captions (펀치 자막) · 움직임: feel-twos (투스 (12fps)) · 글자: "오늘의 커피"` 형식입니다(영어 화면이면 `Motion style picked → main: … · format: … · overlays: … · feel: … · text: "…"`). 예전 형식(메인·보조·글자만)도 똑같이 받습니다. 이 문장이나 단축 선택지 답이 오면 바로 2라운드로 넘어가고, `글자`는 장면 구성과 프롬프트에 그대로 씁니다. 포맷·오버레이·움직임이 `없음`/`기본`이면 스타일에 맞게 정합니다.
+**A. 채팅 안 갤러리 (기본, Visualizer `show_widget`이 있을 때 — Claude.ai, Claude 데스크톱·모바일)**
+갤러리는 미리 만들어 CDN에 올려 두었습니다. 코드를 새로 쓰지 않고 아래 **한 줄짜리 로더**만 넘기므로 바로 뜹니다.
+1. 이 대화에서 처음이면 Visualizer `read_me`(modules: interactive)를 먼저 조용히 호출합니다.
+2. 1라운드 답을 어떻게 이해했는지 한 줄 쓰고 "아래는 스타일마다 실제로 움직이는 미리보기 갤러리예요"로 끝낸 뒤, `show_widget`(title `motion_style_gallery`)의 `widget_code`로 아래를 **그대로** 넘깁니다.
 
-**A-2. 인라인 위젯 (사용자가 "여기서 보여줘", "채팅 안에서 볼래"라고 할 때만)**
-Visualizer `show_widget`이 있으면 `assets/gallery-widget.html`을 읽어 한 글자도 바꾸지 않고 `widget_code`로 넘깁니다(title `motion_style_gallery`, 처음이면 `read_me` modules: interactive를 먼저 조용히 호출). 코드가 커서 뜨는 데 시간이 걸린다고 한 줄 알려 줍니다. 위젯 버튼은 선택 문장을 채팅으로 바로 보냅니다.
+```html
+<h2 class="sr-only">모션그래픽 스타일 갤러리 / Motion style gallery</h2><div id="msp"><p style="font-size:13px;color:var(--text-secondary)">갤러리 불러오는 중… / Loading gallery…</p></div><script src="https://cdn.jsdelivr.net/gh/eminoart/motion-style-picker@7e2effd90f4b/skills/motion-style-picker/assets/gallery.js"></script>
+```
+
+3. 위젯 뒤 안내: "위 칸에 영상에 들어갈 글자를 쓰면 모든 미리보기가 그 글자로 바뀌어요. 위쪽 탭으로 그룹을 골라 볼 수 있어요. 스타일 카드를 누르면 '메인 ✓', 하나 더 누르면 '보조 ✓'가 붙어요. 포맷·오버레이·움직임 느낌은 '선택 ✓'로 표시되고 골라도 되고 안 골라도 돼요. 다 고른 뒤 아래 버튼을 눌러 주세요." 사용자가 이미 글자(브랜드명·카피)를 말했다면 "위 칸에 ○○을 넣어 보세요"라고 덧붙입니다.
+4. 버튼을 누르면 `모션 스타일 선택 → 메인: kinetic-type (키네틱 타이포), 보조: 없음 · 포맷: chat-story (채팅 스토리) · 오버레이: punch-captions (펀치 자막) · 움직임: feel-twos (투스 (12fps)) · 글자: "오늘의 커피"` 같은 메시지가 들어옵니다(영어 화면이면 `Motion style picked → main: … · format: … · overlays: … · feel: … · text: "…"`). 예전 형식(메인·보조·글자만)도 똑같이 받습니다. 이 메시지가 오면 바로 2·3라운드로 넘어가고, `글자`는 장면 구성과 프롬프트에 그대로 씁니다. 포맷·오버레이·움직임이 `없음`/`기본`이면 스타일에 맞게 정합니다.
+5. 사용자가 "안 떠요", "빈 화면이에요"라고 하면(CDN이 막힌 환경) `assets/gallery-widget.html`을 읽어 그대로 `widget_code`로 넘기거나(느림), 아래 A-2 링크를 줍니다.
+
+**A-2. 링크 (위젯이 없는 환경, 또는 새 창에서 크게 보고 싶을 때)**
+- https://eminoart.github.io/motion-style-picker/ (GitHub Pages)
+- 안 열리면: https://raw.githack.com/eminoart/motion-style-picker/main/skills/motion-style-picker/assets/gallery.html
+- 링크 페이지에서는 버튼을 누르면 선택 문장이 복사되므로 "여기에 붙여 넣어 주세요"라고 안내합니다. 링크를 줄 때는 용도에 맞는 후보 4개를 후보표에서 골라 `AskUserQuestion`(header: 스타일)으로 바로 고를 수도 있게 합니다.
 
 **B. 셸이 있는 코딩 도구 (Claude Code, Codex, Cursor, Gemini CLI 등)**
 1. 이 스킬 폴더의 `assets/gallery.html`을 OS 임시 폴더에 복사해 브라우저로 엽니다(macOS `open`, Linux `xdg-open`, Windows `start`). 파일이 없으면 A의 링크를 주거나, `assets/gallery-widget.html` 앞에 `<!doctype html><meta charset="utf-8"><style>:root{--border:#ddd;--border-accent:#378add;--surface-2:#fff;--text-secondary:#666;--text-danger:#c00;--text-accent:#185fa5;--bg-neutral:#f3f4f6}body{font-family:sans-serif;padding:16px}.sr-only{position:absolute;left:-9999px}</style><script>function sendPrompt(t){navigator.clipboard.writeText(t).then(()=>alert('복사됨 / Copied: '+t))}</script>`를 붙여 파일로 만듭니다.
@@ -299,7 +306,8 @@ Visualizer `show_widget`이 있으면 `assets/gallery-widget.html`을 읽어 한
 
 ## 갤러리 파일
 
-- `assets/gallery-widget.html` : `show_widget`에 그대로 넘기는 조각(약 78KB). 인라인 위젯을 원할 때만 읽습니다.
+- `assets/gallery.js` : 위젯 로더가 불러오는 번들. 고치면 커밋 해시를 A의 로더 주소에 새로 넣습니다.
+- `assets/gallery-widget.html` : CDN이 막혔을 때만 `show_widget`에 그대로 넘기는 전체 코드(약 80KB, 느림).
 - `assets/gallery.html` : 브라우저에서 바로 여는 독립 실행판. 아래 주소로도 열립니다.
   - https://eminoart.github.io/motion-style-picker/ (GitHub Pages)
   - https://raw.githack.com/eminoart/motion-style-picker/main/skills/motion-style-picker/assets/gallery.html (Pages가 안 열릴 때)
