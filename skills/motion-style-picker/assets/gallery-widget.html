@@ -1,10 +1,11 @@
 <style>
-.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
 .c{position:relative;border:0.5px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;background:var(--surface-2);text-align:left;padding:0;font:inherit;color:inherit}
 .c.m{outline:3px solid var(--border-accent);outline-offset:-1px}.c.s{outline:3px dashed var(--border-accent);outline-offset:-1px}
 .bd{position:absolute;top:8px;left:8px;z-index:3;font-size:12px;font-weight:500;padding:3px 10px;border-radius:999px}
 .bd.m{background:#185fa5;color:#fff}.bd.s{background:#fff;color:#185fa5;border:1.5px solid #185fa5}
-.stage{position:relative;height:124px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1}
+.stage{position:relative;height:calc(124px * var(--k,1));overflow:hidden}
+.sw{position:absolute;left:0;top:0;width:calc(100% / var(--k,1));height:124px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.1;overflow:hidden;transform:scale(var(--k,1));transform-origin:0 0}
 .n{padding:7px 10px 9px;font-size:14px;font-weight:500}.n small{display:block;font-size:12px;font-weight:400;color:var(--text-secondary);margin-top:2px}
 .L{display:inline-block;white-space:pre}.a{position:absolute}
 .lg{font-size:12px;padding:4px 10px}.lg.on{border-color:var(--border-accent);color:var(--text-accent)}
@@ -46,7 +47,17 @@
 .c{display:flex;flex-direction:column}.c>.stage,.c>.n{width:100%;box-sizing:border-box}
 .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 10px}.tb{font-size:12px;padding:5px 11px;border-radius:999px}.tb.on{border-color:var(--border-accent);color:var(--text-accent);background:var(--surface-2)}
 .gh{margin:16px 0 6px;font-size:15px;font-weight:500}.gh small{font-size:12px;font-weight:400;color:var(--text-secondary);margin-left:8px}
-.bd.k{background:#0f6e56;color:#fff}.c.k{outline:3px solid #0f6e56;outline-offset:-1px}
+.bd.k{background:#0f6e56;color:#fff}
+.c{content-visibility:auto;contain-intrinsic-size:auto 180px}
+#bar{position:sticky;bottom:0;z-index:5;box-shadow:0 -4px 14px rgba(0,0,0,.08)}
+@media (max-width:560px){
+.g{grid-template-columns:1fr 1fr;gap:8px}
+.n{font-size:13px;padding:6px 8px 8px;line-height:1.3}.n small{font-size:11px}
+.bd{font-size:11px;padding:2px 8px;top:6px;left:6px}
+.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:2px -4px 8px;padding:0 4px 4px}.tabs::-webkit-scrollbar{display:none}.tb{flex:none}
+.gh{margin:12px 0 6px;font-size:14px}.gh small{display:block;margin:2px 0 0}
+#bar{gap:8px;padding:10px}#st{font-size:13px;flex:1 1 100%}#go{width:100%;margin-left:0;padding:10px}
+}.c.k{outline:3px solid #0f6e56;outline-offset:-1px}
 @keyframes inkB{0%{transform:scale(.2);opacity:0}35%{opacity:.85}75%,100%{transform:scale(1.6);opacity:0}}
 @keyframes wv{to{background-position:40px 0}}
 @keyframes tileIn{0%{opacity:0;transform:scale(.2)}15%,70%{opacity:1;transform:scale(1)}85%,100%{opacity:0;transform:scale(.2)}}
@@ -87,7 +98,7 @@
 <div id="e1" style="font-size:13px;color:var(--text-danger);min-height:16px;margin-bottom:4px"></div>
 <div class="tabs" id="tabs"></div>
 <div id="g"></div>
-<div style="display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap;padding:12px;border-radius:12px;background:var(--bg-neutral)">
+<div id="bar" style="display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap;padding:12px;border-radius:12px;background:var(--bg-neutral)">
   <span id="st" style="font-size:14px"></span>
   <button id="go" style="margin-left:auto"></button>
 </div>
@@ -95,7 +106,7 @@
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fs=t=>{const n=[...t].length;return n<=4?34:n<=7?27:n<=11?21:n<=15?17:14};
 const L=(t,f)=>[...t].map((c,i)=>`<span class="L" style="${f(i)}">${c===' '?' ':esc(c)}</span>`).join('');
-const S=(bg,inner,extra='')=>`<div class="stage" style="background:${bg};${extra}">${inner}</div>`;
+const S=(bg,inner,extra='')=>`<div class="stage"><div class="sw" style="background:${bg};${extra}">${inner}</div></div>`;
 const RD="ui-rounded,'Arial Rounded MT Bold','Nunito',sans-serif";
 let G='ko';
 const FE=(tf,lab,c)=>t=>S('#f8f9fa',`<div class="a" style="left:12px;top:10px;font-size:11px;font-family:var(--font-mono),monospace;color:#666">${lab}</div><div class="a" style="left:0;right:0;top:78px;height:1px;background:#ddd"></div><div style="position:relative;margin-top:14px;padding:4px 10px;border-radius:10px;background:${c};color:#fff;font-weight:700;font-size:${Math.max(12,fs(t)-10)}px;white-space:nowrap;animation:mv 2.4s ${tf} infinite">${esc(t)}</div>`);
@@ -269,7 +280,7 @@ hint0:'스타일 카드를 누르면 <b style="font-weight:500">메인</b>, 하�
 en:{tl:'Type the words for your video',ph:'Morning Coffee',hl:'"Seen it in" hints',seen:'Seen in: ',all:'All',m:'Main',s:'Accent',ok:'Picked',f:'Format',o:'Overlays',e:'Feel',none:'none',
 sub:{style:'click once for main, another for accent',format:'video template · pick one (optional)',overlay:'captions and extras · pick any (optional)',feel:'frame cadence · pick one (optional)'},
 hint0:'Click a style card for the <b style="font-weight:500">main</b> style, another for an <b style="font-weight:500">accent</b>. Format, overlays and feel are optional.',go0:'Continue with this mix ↗',go:(a,b)=>`Continue with ${a}${b?' + '+b:''} ↗`,err:'Pick a main style first by clicking a style card.'}};
-const $=id=>document.getElementById(id);let m=null,s=null,fm=null,fe=null,ov=[],tab='all';
+const $=id=>document.getElementById(id);let m=null,s=null,fm=null,fe=null,ov=[],tab=(window.innerWidth||800)<560?'g2d':'all';
 G=(document.documentElement.lang||navigator.language||'ko').toLowerCase().startsWith('ko')?'ko':'en';
 const row=id=>D.find(x=>x[0]===id);
 const nm=id=>{const d=row(id);return G==='ko'?d[1]:d[3]};
@@ -280,11 +291,13 @@ else if((k==='format'&&id===fm)||(k==='feel'&&id===fe)||(k==='overlay'&&ov.inclu
 return `<button class="c${cl}" data-id="${id}">${b}${R[id](t)}<div class="n">${G==='ko'?d[1]:d[3]}${h?`<small>${X.seen}${G==='ko'?d[2]:d[4]}</small>`:''}</div></button>`}
 function render(){const t=txt(),h=$('hint').checked,X=T[G];
 $('tabs').innerHTML=[['all',X.all,D.length]].concat(GR.map(g=>[g[0],G==='ko'?g[1]:g[2],g[4].length])).map(([k,n,c])=>`<button class="tb${tab===k?' on':''}" data-t="${k}">${n} ${c}</button>`).join('');
-$('g').innerHTML=GR.filter(g=>tab==='all'||tab===g[0]).map(g=>`<div class="gh">${G==='ko'?g[1]:g[2]}<small>${X.sub[g[3]]}</small></div><div class="g">${g[4].map(id=>card(id,t,h)).join('')}</div>`).join('');paint()}
+fitK();$('g').innerHTML=GR.filter(g=>tab==='all'||tab===g[0]).map(g=>`<div class="gh">${G==='ko'?g[1]:g[2]}<small>${X.sub[g[3]]}</small></div><div class="g">${g[4].map(id=>card(id,t,h)).join('')}</div>`).join('');paint()}
+function fitK(){const g=$('g');requestAnimationFrame(()=>{const c=g.querySelector('.stage');if(c&&c.clientWidth)g.style.setProperty('--k',Math.min(1,c.clientWidth/210).toFixed(3))})}
+window.addEventListener('resize',()=>fitK());
 function paint(){const X=T[G],p=[];if(m)p.push(`<b style="font-weight:500">${X.m}</b> ${nm(m)}`);if(s)p.push(`<b style="font-weight:500">${X.s}</b> ${nm(s)}`);if(fm)p.push(`<b style="font-weight:500">${X.f}</b> ${nm(fm)}`);if(ov.length)p.push(`<b style="font-weight:500">${X.o}</b> ${ov.map(nm).join(', ')}`);if(fe)p.push(`<b style="font-weight:500">${X.e}</b> ${nm(fe)}`);
 $('st').innerHTML=p.length?p.join(' · '):X.hint0;$('go').textContent=m?X.go(nm(m),s?nm(s):''):X.go0}
 function lang(l){G=l;const X=T[G];$('tl').textContent=X.tl;$('txt').placeholder=X.ph;$('hl').textContent=X.hl;$('lk').classList.toggle('on',G==='ko');$('le').classList.toggle('on',G==='en');$('e1').textContent='';render()}
-$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tb');if(!b)return;tab=b.dataset.t;render()});
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tb');if(!b)return;tab=b.dataset.t;render();b.scrollIntoView&&$('tabs').querySelector('.tb.on').scrollIntoView({block:'nearest',inline:'center'})});
 $('g').addEventListener('click',e=>{const c=e.target.closest('.c');if(!c)return;const id=c.dataset.id,k=KIND[id];
 if(k==='style'){if(id===m){m=s;s=null}else if(id===s){s=null}else if(!m){m=id}else{s=id}}
 else if(k==='format'){fm=fm===id?null:id}else if(k==='feel'){fe=fe===id?null:id}
